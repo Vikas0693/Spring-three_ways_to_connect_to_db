@@ -22,9 +22,7 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO{
 	public EmployeeDAOHibernateImpl(EntityManager theEntityManager) {
 		this.entityManager = theEntityManager;
 	}
-	//@Transactional handles transaction for use so we dont do start or commit
 	@Override
-	@Transactional
 	public List<Employee> findAll() {
 		Session session = entityManager.unwrap(Session.class);
 		Query<Employee> theQuery = 
@@ -32,6 +30,28 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO{
 		
 		List<Employee> employees = theQuery.getResultList();
 		return employees;
+	}
+	
+	@Override
+	public Employee findById(int id) {
+		Session session = entityManager.unwrap(Session.class);
+		Employee emp = session.get(Employee.class, id);
+		return emp;
+	}
+	
+	@Override
+	public void save(Employee employee) {
+		Session session = entityManager.unwrap(Session.class);
+		//if id is 0 then it saves else it updates
+		session.saveOrUpdate(employee);
+		
+	}
+	
+	@Override
+	public void deleteById(int id) {
+		Session session = entityManager.unwrap(Session.class);
+		Query query = session.createQuery("delete from Employee where id =: employeeId").setParameter("employeeId", id);
+		query.executeUpdate();
 	}
 
 }

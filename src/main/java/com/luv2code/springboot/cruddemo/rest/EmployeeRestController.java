@@ -19,7 +19,7 @@ import com.luv2code.springboot.cruddemo.dao.EmployeeDAO;
 import com.luv2code.springboot.cruddemo.entity.Employee;
 import com.luv2code.springboot.cruddemo.service.EmployeeService;
 
-@RestController
+//@RestController
 @RequestMapping("/api")
 public class EmployeeRestController {
 

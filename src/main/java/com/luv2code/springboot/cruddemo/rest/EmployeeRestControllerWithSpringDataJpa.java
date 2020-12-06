@@ -21,7 +21,7 @@ import com.luv2code.springboot.cruddemo.dao.EmployeeRepository;
 import com.luv2code.springboot.cruddemo.entity.Employee;
 import com.luv2code.springboot.cruddemo.service.EmployeeService;
 
-@RestController
+//@RestController
 @RequestMapping("/api/spring-data-jpa")
 public class EmployeeRestControllerWithSpringDataJpa {
 
